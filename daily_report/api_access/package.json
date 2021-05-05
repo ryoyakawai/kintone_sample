@@ -1,0 +1,14 @@
+{
+  "name": "api_access",
+  "version": "1.0.0",
+  "description": "``` export const credential = {     id: 'xxxxx',     pw: 'xxxxx' } ```",
+  "main": "credential.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
