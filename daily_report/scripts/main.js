@@ -15,11 +15,11 @@
 
     // Label Name
     const obj_label = {
-      _LABEL_NAME: 'Label',
+      _LABEL_NAME: 'Lookup_LabelMaster',
       _DATE: 'Date',
-      _CONTENT_TODAY: '今日やったこと',
-      _CONTENT_NEXT: '明日やること',
-      _COMMENT: '所感'
+      _CONTENT_TODAY: 'Today_Text_area',
+      _CONTENT_NEXT: 'Tomorrow_Text_area',
+      _COMMENT: 'Comment_Text_area'
     }
     let tableHTML = '<tbody><thead><tr>'
     Object.keys(obj_label).forEach( key => {
@@ -42,7 +42,7 @@
     console.log('[event.records]', dailyReportAppRecord)
 
     // APP_ID=2(ラベル)のレコードを取得する
-    const APP_ID = 2
+    const APP_ID = 1
     const paramForGet = {
       'app': APP_ID
     }
@@ -51,25 +51,23 @@
       const resp = await kintone.api(kintone.api.url('/k/v1/records', true), 'GET', paramForGet)
       console.log('[ラベルのレコード]', resp)
 
-      /*
-      // [DOES NOT WORK]
-      // https://developer.cybozu.io/hc/ja/articles/900001314606-kintone-%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%88%A5%E3%82%A2%E3%83%97%E3%83%AA%E3%81%8B%E3%82%89%E5%8F%82%E7%85%A7%E3%81%97%E3%82%88%E3%81%86
+      // [kintone のテーブルのデータを別アプリから参照しよう – cybozu developer network]
+      // https://bit.ly/33pME7p
+      // show contents in same app
       const labelMasterReferRecords = resp.records
       if (labelMasterReferRecords.length === 0) {
         throw new Error('ERROR')
       }
-      console.log(labelMasterReferRecords[0])
-      console.log(labelMasterReferRecords[0]['日報のラベルマスタ'])
 
-      const tableRows = labelMasterReferRecords[0].value
+      const tableRows = labelMasterReferRecords
       const tableRef = document.getElementById('table')
       tableRows.forEach((row) => {
         const tableRow = tableRef.insertRow(-1)
         Object.keys(obj_label).forEach( key => {
-          tableRow.insertCell(-1).appendChild(document.createTextNode(row.value[key].value))
+          tableRow.insertCell(-1).appendChild(document.createTextNode(row.a[obj_label[key]].value))
         })
       })
-      */
+
     } catch (err) {
       console.log('ERROR', err)
       return event
