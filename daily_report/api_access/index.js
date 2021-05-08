@@ -1,20 +1,26 @@
 "use strict";
 const credential = require("./credential.js");
+/*
+ * // prepare credential.js as below before exec
+ * module.exports = {
+ *   id: 'xxx_id_xxx@example.com',
+ *   pw: 'xxx_password_xxx',
+ *   subdomain: 'xxx_subdomain_xxx'
+ * }
+ */
 
 (async () => {
   console.log("[Credential] ", credential)
-  const subdomain = "0iqzuo0vezpp"
+  const subdomain = `${credential.subdomain}`
   const idpw_base64 = Buffer.from(`${credential.id}:${credential.pw}`).toString('base64')
+  const app_no = 1
 
   //
   const fetch = require('node-fetch')
-  const api_endpoint = `https://${subdomain}.cybozu.com/k/v1/records.json?app=1`
+  const api_endpoint = `https://${subdomain}.cybozu.com/k/v1/records.json?app=${app_no}`
   const header_params = {
     'X-Cybozu-Authorization': `${idpw_base64}`,
     'Authorization': `Basic ${idpw_base64}`
-  }
-  const _header_params = {
-    'X-Cybozu-API-Token' : 'UtKTwRZ6uZRGkJrGEYEpm9TYAsfsQft0nKaf8tkA'
   }
 
   console.log(`[API Endpoint] ${api_endpoint}`)
