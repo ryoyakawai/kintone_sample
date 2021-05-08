@@ -64,7 +64,7 @@
       tableRows.forEach((row) => {
         const tableRow = tableRef.insertRow(-1)
         Object.keys(obj_label).forEach( key => {
-          tableRow.insertCell(-1).appendChild(document.createTextNode(row.a[obj_label[key]].value))
+          tableRow.insertCell(-1).appendChild(document.createTextNode(row[obj_label[key]].value))
         })
       })
 
