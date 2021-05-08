@@ -41,15 +41,15 @@
     //const tableRows = dailyReportAppRecord[_LABEL_NAME]
     console.log('[event.records]', dailyReportAppRecord)
 
-    // APP_ID=2(ラベル)のレコードを取得する
+    // APP_ID=1(ラベル)のレコードを取得する
     const APP_ID = 1
     const paramForGet = {
       'app': APP_ID
     }
+
     try {
       const _LABEL_MASTER_REFER_COLUMN_NAME = 'Labelマスタ'
       const resp = await kintone.api(kintone.api.url('/k/v1/records', true), 'GET', paramForGet)
-      console.log('[ラベルのレコード]', resp)
 
       // [kintone のテーブルのデータを別アプリから参照しよう – cybozu developer network]
       // https://bit.ly/33pME7p
