@@ -1,3 +1,21 @@
 button.gaia-argoui-app-subtotalbutton {
   display:none;
 }
+
+div.record_create_show_task_yesterday,
+div.record_create_show_task_today {
+  color: #888;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  border-radius: 3px;
+  background-color: #efefef;
+  margin: 5px 10px;
+}
+
+p.record_create_show_task_yesterday_title,
+p.record_create_show_task_today_title {
+  text-decoration: underline;
+}
+p.narrow_margin {
+  margin: 4px 0;
+}
